@@ -1,10 +1,8 @@
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 const SearchForm = () => {
   return (
-    <Grid
-      container
-      spacing={2}
+    <Box
       sx={{
         height: '40vh',
         width: '55vw',
@@ -16,7 +14,7 @@ const SearchForm = () => {
       }}
     >
       SearchForm
-    </Grid>
+    </Box>
   );
 };
 
