@@ -1,36 +1,52 @@
 import { createTheme } from '@mui/material/styles';
 
-declare module '@mui/material/styles/createPalette' {
-  interface PaletteOptions {
+declare module '@mui/material/styles' {
+  interface Theme {
     others: {
       // New colours
-      black: string;
-      gray: string;
-      marks: string;
-      purpleDark: string;
-      purpleLight: string;
-      red: string;
-      white: string;
-      bgPurple: string;
-      bgGreen: string;
+      black: React.CSSProperties['color'];
+      gray: React.CSSProperties['color'];
+      marks: React.CSSProperties['color'];
+      purpleDark: React.CSSProperties['color'];
+      purpleLight: React.CSSProperties['color'];
+      red: React.CSSProperties['color'];
+      white: React.CSSProperties['color'];
+      bgPurple: React.CSSProperties['color'];
+      bgGreen: React.CSSProperties['color'];
+    };
+  }
+
+  interface ThemeOptions {
+    others: {
+      black: React.CSSProperties['color'];
+      gray: React.CSSProperties['color'];
+      marks: React.CSSProperties['color'];
+      purpleDark: React.CSSProperties['color'];
+      purpleLight: React.CSSProperties['color'];
+      red: React.CSSProperties['color'];
+      white: React.CSSProperties['color'];
+      bgPurple: React.CSSProperties['color'];
+      bgGreen: React.CSSProperties['color'];
     };
   }
 }
 
 // A custom theme for this app
 const theme = createTheme({
-  palette: {
-    others: {
-      black: '#374151',
-      gray: '#E5E7EB',
-      marks: '#FAC300',
-      purpleDark: '#7786D2',
-      purpleLight: '#C7D1F4',
-      red: '#FF0000',
-      white: '#FFFFFF',
-      bgPurple: '#9747FF',
-      bgGreen: '#DBF9B3',
-    },
+  typography: {
+    // Tell Material UI what the font-size on the html element is.
+    htmlFontSize: 10,
+  },
+  others: {
+    black: '#374151',
+    gray: '#E5E7EB',
+    marks: '#FAC300',
+    purpleDark: '#7786D2',
+    purpleLight: '#C7D1F4',
+    red: '#FF0000',
+    white: '#FFFFFF',
+    bgPurple: '#9747FF',
+    bgGreen: '#DBF9B3',
   },
 });
 
