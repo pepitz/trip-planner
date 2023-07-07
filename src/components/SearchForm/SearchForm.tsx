@@ -6,7 +6,6 @@ const SearchForm = () => {
       container
       spacing={2}
       sx={{
-        // display: 'flex',
         height: '40vh',
         width: '55vw',
         padding: '3rem 8rem',
