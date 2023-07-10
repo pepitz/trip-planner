@@ -51,3 +51,20 @@
     }
   }
 }
+
+.form--submit {
+  display: flex;
+  justify-content: center;
+}
+#submit-form-button {
+  height: 3.8rem;
+  display: flex;
+  padding: 8px 12px;
+  background-color: #374151;
+  color: white;
+  font-family: Inter;
+  font-size: 1.4rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+}

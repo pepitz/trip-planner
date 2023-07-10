@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-
 import IconButton from '@mui/material/IconButton';
 
 import TimeLine from 'components/TravelLine/TravelLine';
@@ -9,10 +8,12 @@ import CustomIcon from 'components/CustomIcon/CustomIcon';
 
 import icons from 'enums/icons';
 import * as CONSTANTS from 'constants/index';
+import { ICityAutocompleteProps } from 'types';
+
+import CityAutocomplete from 'components/common/CityAutocomplete';
+import AddDestinationButton from 'components/AddDestinationButton/AddDestinationButton';
 
 import './SearchForm.scss';
-import CityAutocomplete from 'components/common/CityAutocomplete';
-import { ICityAutocompleteProps } from 'types';
 
 const SearchForm = () => {
   const [cities, setCities] = useState<ICityAutocompleteProps[]>([]);
@@ -79,9 +80,10 @@ const SearchForm = () => {
     <Box
       sx={{
         display: 'flex',
+        flexDirection: 'column',
         height: '40vh',
         width: '55vw',
-        padding: '3rem 8rem',
+        padding: '4rem 8rem',
         border: '1px solid transparent',
         borderRadius: '1.6rem',
         boxShadow: (theme) => `1px 4px 10px ${theme.others.gray}`,
@@ -126,12 +128,7 @@ const SearchForm = () => {
               </Box>
             </Box>
 
-            <Box component="section" className="path__container--add-city">
-              <IconButton onClick={handleAddCity}>
-                <CustomIcon fill="transparent" icon={icons.plus_outlined} />
-              </IconButton>
-              <span>Add Destination</span>
-            </Box>
+            <AddDestinationButton handleAddCity={handleAddCity} />
           </Box>
 
           <Box component="section" className="passengers__container">
@@ -171,11 +168,12 @@ const SearchForm = () => {
             </Box>
           </Box>
         </Box>
-
-        <Box component="section" className="form--submit">
-          <button type="submit">Submit</button>
-        </Box>
       </form>
+      <Box component="section" className="form--submit">
+        <button id="submit-form-button" type="submit">
+          Submit
+        </button>
+      </Box>
     </Box>
   );
 };
