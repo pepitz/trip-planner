@@ -1,3 +1,6 @@
+export const ORIGIN = 'origin';
+export const DESTINATION = 'destination';
+
 export const CITY_ORIGIN = 'City of origin';
 export const CITY_DESTINATION = 'City of destination';
 
