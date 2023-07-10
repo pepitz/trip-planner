@@ -81,7 +81,7 @@ const SearchForm = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        height: '40vh',
+        height: 'auto',
         width: '55vw',
         padding: '4rem 8rem',
         border: '1px solid transparent',
@@ -95,7 +95,7 @@ const SearchForm = () => {
           <Box component="section" className="path__container">
             <Box component="article" className="path__container--cities">
               <Box component="aside" className="timeline">
-                <TimeLine />
+                <TimeLine stops={cities} />
               </Box>
               <Box component="article" className="travelCities">
                 {cities.length > 0

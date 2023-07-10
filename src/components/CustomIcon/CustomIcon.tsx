@@ -15,7 +15,7 @@ const CustomIcon = ({
         height={height || 14}
         viewBox={viewBox || '0 0 14 14'}
       >
-        <g fill={fill ?? 'currentColor'}>{icon}</g>
+        <g fill={fill ?? 'transparent'}>{icon}</g>
       </svg>
     </SvgIcon>
   );
