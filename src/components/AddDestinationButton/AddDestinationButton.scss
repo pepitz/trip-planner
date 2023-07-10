@@ -1,0 +1,20 @@
+.path__container--add-city {
+  display: flex;
+  align-items: center;
+
+  label {
+    font-size: 1.2rem;
+    font-family: Inter;
+    font-weight: 500;
+    color: #7786d2;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  button {
+    margin-right: 4.5rem;
+    svg {
+      font-size: 1.4rem;
+    }
+  }
+}
