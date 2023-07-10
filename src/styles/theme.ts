@@ -33,7 +33,25 @@ declare module '@mui/material/styles' {
 
 // A custom theme for this app
 const theme = createTheme({
+  palette: {
+    error: {
+      main: '#FF0000',
+    },
+  },
   typography: {
+    fontFamily: [
+      'Inter',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
     // Tell Material UI what the font-size on the html element is.
     htmlFontSize: 10,
   },
@@ -47,6 +65,38 @@ const theme = createTheme({
     white: '#FFFFFF',
     bgPurple: '#9747FF',
     bgGreen: '#DBF9B3',
+  },
+  components: {
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          '& .Mui-focused': {
+            borderColor: '#C7D1F4',
+          },
+        },
+        option: {
+          '& .Mui-focused': {
+            backgroundColor: '#C7D1F4',
+          },
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: '#374151',
+          '&.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+            border: `1px solid #E5E7EB`,
+          },
+          '&.MuiOutlinedInput-root.Mui-focused': {
+            borderColor: '#C7D1F4',
+          },
+          '&:hover': {
+            borderColor: '#7786D2',
+          },
+        },
+      },
+    },
   },
 });
 
