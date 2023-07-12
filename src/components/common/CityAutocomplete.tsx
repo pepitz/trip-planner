@@ -9,10 +9,14 @@ import {
   TextField,
   CircularProgress,
   AutocompleteInputChangeReason,
+  IconButton,
 } from '@mui/material';
 import { getRequiredMessage } from 'utils/helpers';
 import { ICityAutocompleteProps } from 'types';
 import * as CONSTANTS from 'constants/index';
+import CustomIcon from 'components/CustomIcon/CustomIcon';
+import icons from 'enums/icons';
+import React from 'react';
 
 const CityAutocomplete = ({
   index,
@@ -65,6 +69,7 @@ const CityAutocomplete = ({
   return (
     <Box className="travelCities__control">
       <Autocomplete
+        sx={{ flex: 1 }}
         readOnly={isServerError}
         options={optionsCities}
         loading={isLoadingOptions}
@@ -119,8 +124,25 @@ const CityAutocomplete = ({
           />
         )}
       />
+      {canBeDeleted ? (
+        <IconButton
+          sx={{ marginTop: '-5vh' }}
+          onClick={() => handleDelete(index)}
+          disabled={false}
+          disableRipple
+        >
+          <CustomIcon
+            width={14}
+            heigt={14}
+            viewBox="0 0 14 14"
+            icon={icons.delete}
+          ></CustomIcon>
+        </IconButton>
+      ) : (
+        <Box sx={{ width: '3rem' }}></Box>
+      )}
     </Box>
   );
 };
 
-export default CityAutocomplete;
+export default React.memo(CityAutocomplete);
