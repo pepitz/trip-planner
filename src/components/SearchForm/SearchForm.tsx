@@ -11,11 +11,14 @@ import AddDestinationButton from 'components/AddDestinationButton/AddDestination
 import PassengersCounter from 'components/PassengersCounter/PassengersCounter';
 
 import './SearchForm.scss';
+import DateSelector from 'components/DateSelector/DateSelector';
+import useDateSelector from 'components/DateSelector/useDateSelector';
 
 const SearchForm = () => {
   const [cities, setCities] = useState<ICityAutocompleteProps[]>([]);
   const [numberPassengers, setNumberPassengers] = useState(0);
   const [isPassengersValid, setPassengersValid] = useState(true);
+  const { date, setDate, isDateValid, setDateValid } = useDateSelector();
 
   const handleAddCity = () => {
     setCities((prevValue) => {
@@ -150,13 +153,11 @@ const SearchForm = () => {
               />
             </Box>
             <Box className="datepicker">
-              <label>Date</label>
-              <input
-                type="date"
-                id="start"
-                name="trip-start"
-                min="2018-07-07"
-                max=""
+              <DateSelector
+                date={date}
+                setDate={setDate}
+                setDateValid={setDateValid}
+                minDate={date}
               />
             </Box>
           </Box>

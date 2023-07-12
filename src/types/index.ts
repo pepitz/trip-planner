@@ -30,3 +30,10 @@ export type TUsePassengersCounter = {
     numberPassengers: number
   ) => void;
 };
+
+export interface IDateSelectorProps {
+  date: Date;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
+  setDateValid: React.Dispatch<React.SetStateAction<boolean>>;
+  minDate: Date;
+}
