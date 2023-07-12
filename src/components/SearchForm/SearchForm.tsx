@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 
 import TimeLine from 'components/TravelLine/TravelLine';
 import CityAutocomplete from 'components/CityAutocomplete/CityAutocomplete';
@@ -14,12 +15,21 @@ import useDateSelector from 'components/DateSelector/useDateSelector';
 import './SearchForm.scss';
 
 const SearchForm = () => {
-  const { cities, handleAddCity } = useCityAutocomplete();
+  const { cities, handleAddCity, hasValidCities } = useCityAutocomplete();
   const [numberPassengers, setNumberPassengers] = useState(0);
   const [isPassengersValid, setPassengersValid] = useState(true);
-  const { date, setDate, isDateValid, setDateValid } = useDateSelector();
+  const { date, setDate, isDateValid } = useDateSelector();
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleSubmit = () => console.log('paint data');
+
+  useEffect(() => {
+    if (hasValidCities && isPassengersValid && isDateValid) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
+  }, [hasValidCities, isPassengersValid, isDateValid]);
 
   return (
     <Box
@@ -84,21 +94,20 @@ const SearchForm = () => {
                 isPassengersValid={isPassengersValid}
               />
             </Box>
-            <Box className="datepicker">
-              <DateSelector
-                date={date}
-                setDate={setDate}
-                setDateValid={setDateValid}
-                minDate={date}
-              />
-            </Box>
+          </Box>
+          <Box className="datepicker">
+            <DateSelector
+              date={date}
+              setDate={setDate}
+              isDateValid={isDateValid}
+            />
           </Box>
         </Box>
       </form>
       <Box component="section" className="form--submit">
-        <button id="submit-form-button" type="submit">
+        <Button id="submit-form-button" type="submit" disabled={!isFormValid}>
           Submit
-        </button>
+        </Button>
       </Box>
     </Box>
   );
