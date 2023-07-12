@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useDateSelector = () => {
-  let tomorrow = new Date();
-  const tomorrowTimestamp = tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow = new Date(tomorrowTimestamp);
-
-  const [date, setDate] = useState(tomorrow);
+  const [date, setDate] = useState(new Date());
   const [isDateValid, setDateValid] = useState(false);
+
+  useEffect(() => {
+    const selectedTimestamp = date.getTime();
+    const today = Date.now();
+
+    if (selectedTimestamp > today) {
+      setDateValid(true);
+    } else {
+      setDateValid(false);
+    }
+  }, [date]);
 
   return {
     date,
