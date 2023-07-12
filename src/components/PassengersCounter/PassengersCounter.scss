@@ -1,0 +1,11 @@
+.passengers {
+  margin-top: -0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+input {
+  text-align: center;
+}
+input::-webkit-inner-spin-button {
+  display: none;
+}

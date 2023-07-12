@@ -2,10 +2,8 @@ import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineDot from '@mui/lab/TimelineDot';
 
 import { ICityAutocompleteProps } from 'types';
-import * as CONSTANTS from 'constants/index';
 import icons from 'enums/icons';
 import './TravelLine.scss';
 import CustomIcon from 'components/CustomIcon/CustomIcon';
@@ -20,7 +18,7 @@ const TimeLine = ({ stops }: ITimeLineProps): JSX.Element => {
         ? stops.map((stop) => {
             return (
               <TimelineItem
-                key={stop.name}
+                key={stop.index}
                 sx={{
                   '&::before': {
                     padding: 0,
@@ -29,7 +27,7 @@ const TimeLine = ({ stops }: ITimeLineProps): JSX.Element => {
                 }}
               >
                 <TimelineSeparator>
-                  {stop.name !== CONSTANTS.DESTINATION ? (
+                  {stop.index !== stops.length - 1 ? (
                     <CustomIcon
                       width="14"
                       height="14"
@@ -44,7 +42,7 @@ const TimeLine = ({ stops }: ITimeLineProps): JSX.Element => {
                       icon={icons.union}
                     />
                   )}
-                  {stop.name === CONSTANTS.DESTINATION ? null : (
+                  {stop.index === stops.length - 1 ? null : (
                     <TimelineConnector />
                   )}
                 </TimelineSeparator>

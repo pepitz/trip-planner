@@ -70,6 +70,7 @@ const theme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         root: {
+          color: '#374151',
           '& .Mui-focused': {
             borderColor: '#C7D1F4',
           },

@@ -7,6 +7,7 @@ export const CITY_DESTINATION = 'City of destination';
 export const MESSAGE_NO_ORIGIN = 'You must choose the city of origin.';
 export const MESSAGE_NO_DESTINATION =
   'You must choose the city of destination.';
+export const PASSENGERS = 'Passengers';
 export const MESSAGE_NO_PASSENGERS_SELECTED = 'Select passengers.';
 export const FAIL = 'Fail';
 export const MESSAGE_FAIL = 'Ooops! Failed to search with this keyword.';
