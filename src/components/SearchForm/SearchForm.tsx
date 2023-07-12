@@ -1,47 +1,59 @@
 import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 
-import TimeLine from 'components/TravelLine/TravelLine';
-import CustomIcon from 'components/CustomIcon/CustomIcon';
-
-import icons from 'enums/icons';
 import * as CONSTANTS from 'constants/index';
 import { ICityAutocompleteProps } from 'types';
 
+import TimeLine from 'components/TravelLine/TravelLine';
 import CityAutocomplete from 'components/common/CityAutocomplete';
 import AddDestinationButton from 'components/AddDestinationButton/AddDestinationButton';
+import PassengersCounter from 'components/PassengersCounter/PassengersCounter';
 
 import './SearchForm.scss';
 
 const SearchForm = () => {
   const [cities, setCities] = useState<ICityAutocompleteProps[]>([]);
+  const [numberPassengers, setNumberPassengers] = useState(0);
+  const [isPassengersValid, setPassengersValid] = useState(true);
 
   const handleAddCity = () => {
     setCities((prevValue) => {
-      const nextIndex = prevValue.length - 1;
-      let updatedCitites = [...prevValue];
+      let updatedCities = [...prevValue];
+      const lastIndex = updatedCities.length - 1;
 
-      let newCity = { ...updatedCitites[nextIndex] };
-      newCity.index = nextIndex;
-      newCity.name = `intermediate_${nextIndex}`;
-      newCity.value = newCity.value ?? '';
+      updatedCities[lastIndex].name = `intermediate_${lastIndex}`;
+      updatedCities[lastIndex].canBeDeleted = true;
 
-      let final = updatedCitites.slice(0, updatedCitites.length - 1);
-      final.push(newCity);
+      const newRecord = { ...updatedCities[lastIndex] };
+      newRecord.index += 1;
+      newRecord.name = CONSTANTS.DESTINATION;
+      newRecord.value = '';
 
-      let lastElementUpdate = { ...updatedCitites[updatedCitites.length - 1] };
-      lastElementUpdate.index = final.length;
-      lastElementUpdate.value = '';
-
-      final.push(lastElementUpdate);
-      return final;
+      updatedCities.push(newRecord);
+      return updatedCities;
     });
   };
 
   const handleRemoveCity = (index: number) => {
-    // TO DO
+    setCities((prevFields) => {
+      let updated = [...prevFields];
+      updated = updated.filter((city) => city.index !== index);
+      updated.forEach((city, idx, arr) => {
+        if (city.name !== CONSTANTS.ORIGIN) {
+          if (city.index === updated.length - 1) {
+            city.name = CONSTANTS.DESTINATION;
+            city.canBeDeleted = true;
+          }
+          if (idx === 1 && arr.length === 2) {
+            city.name = CONSTANTS.DESTINATION;
+            city.canBeDeleted = false;
+          }
+          city.index = idx;
+        }
+      });
+      return updated;
+    });
   };
 
   const handleSubmit = () => console.log('paint data');
@@ -63,7 +75,7 @@ const SearchForm = () => {
         label: CONSTANTS.CITY_DESTINATION,
         value: '',
         setValue: setCities,
-        canBeDeleted: true,
+        canBeDeleted: false,
         handleDelete: handleRemoveCity,
       },
     ];
@@ -71,9 +83,7 @@ const SearchForm = () => {
   }, []);
 
   useEffect(() => {
-    if (cities.length > 1) {
-      console.log('cities: ', cities);
-    }
+    console.log('cities: ', cities);
   }, [cities]);
 
   return (
@@ -110,17 +120,16 @@ const SearchForm = () => {
                         handleDelete,
                       }) => {
                         return (
-                          <Box className="travelCities__control" key={index}>
-                            <CityAutocomplete
-                              index={index}
-                              name={name}
-                              label={label}
-                              value={value}
-                              setValue={setValue}
-                              canBeDeleted={canBeDeleted}
-                              handleDelete={handleDelete}
-                            />
-                          </Box>
+                          <CityAutocomplete
+                            key={index}
+                            index={index}
+                            name={name}
+                            label={label}
+                            value={value}
+                            setValue={setValue}
+                            canBeDeleted={canBeDeleted}
+                            handleDelete={handleDelete}
+                          />
                         );
                       }
                     )
@@ -133,28 +142,12 @@ const SearchForm = () => {
 
           <Box component="section" className="passengers__container">
             <Box className="passengers">
-              <Box component="h3" className="passengers-title">
-                Passengers
-              </Box>
-              <Box component="section" className="passengers-box">
-                <IconButton>
-                  <CustomIcon
-                    width={22}
-                    heigt={22}
-                    viewBox="0 0 22 22"
-                    icon={icons.minus_squared}
-                  ></CustomIcon>
-                </IconButton>
-                <input type="text" />
-                <IconButton>
-                  <CustomIcon
-                    width={22}
-                    heigt={22}
-                    viewBox="0 0 22 22"
-                    icon={icons.plus_squared}
-                  ></CustomIcon>
-                </IconButton>
-              </Box>
+              <PassengersCounter
+                numberPassengers={numberPassengers}
+                setNumberPassengers={setNumberPassengers}
+                setPassengersValid={setPassengersValid}
+                isPassengersValid={isPassengersValid}
+              />
             </Box>
             <Box className="datepicker">
               <label>Date</label>
