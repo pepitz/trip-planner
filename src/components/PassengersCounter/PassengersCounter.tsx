@@ -42,6 +42,7 @@ const PassengersCounter = ({
   return (
     <Box component="section" className="passengers-box">
       <FormControl
+        required
         sx={{ m: 1, width: 'auto' }}
         variant="outlined"
         error={isPassengersValid === false}
