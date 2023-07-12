@@ -5,6 +5,7 @@ import * as CONSTANTS from 'constants/index';
 
 const useCityAutocomplete = () => {
   const [cities, setCities] = useState<ICityAutocompleteProps[]>([]);
+  const [hasValidCities, setHasValidCities] = useState(false);
 
   const handleAddCity = () => {
     setCities((prevValue) => {
@@ -69,12 +70,23 @@ const useCityAutocomplete = () => {
   }, []);
 
   useEffect(() => {
-    console.log('cities: ', cities);
+    const formCityValues = cities.map((field) => {
+      return { id: { name: field.name, value: field.value } };
+    });
+    const everyCityHasValue = formCityValues.every((field) =>
+      Boolean(field.id.value)
+    );
+    if (everyCityHasValue) {
+      setHasValidCities(true);
+    } else {
+      setHasValidCities(false);
+    }
   }, [cities]);
 
   return {
     cities,
     handleAddCity,
+    hasValidCities,
   };
 };
 

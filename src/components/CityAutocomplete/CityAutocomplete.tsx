@@ -66,6 +66,8 @@ const CityAutocomplete = ({
     isServerError ? setErrMessage(CONSTANTS.MESSAGE_FAIL) : setErrMessage('');
   }, [isServerError]);
 
+  useEffect(() => {}, []);
+
   return (
     <Box className="travelCities__control">
       <Autocomplete
