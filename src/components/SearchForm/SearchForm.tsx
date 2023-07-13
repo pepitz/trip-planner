@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Form } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
 
 import TimeLine from 'components/TravelLine/TravelLine';
 import CityAutocomplete from 'components/CityAutocomplete/CityAutocomplete';
@@ -15,13 +15,12 @@ import useDateSelector from 'components/DateSelector/useDateSelector';
 import './SearchForm.scss';
 
 const SearchForm = () => {
-  const { cities, handleAddCity, hasValidCities } = useCityAutocomplete();
+  const { cities, handleAddCity, hasValidCities, selectedCities } =
+    useCityAutocomplete();
   const [numberPassengers, setNumberPassengers] = useState(0);
   const [isPassengersValid, setPassengersValid] = useState(true);
   const { date, setDate, isDateValid } = useDateSelector();
   const [isFormValid, setIsFormValid] = useState(false);
-
-  const handleSubmit = () => console.log('paint data');
 
   useEffect(() => {
     if (hasValidCities && isPassengersValid && isDateValid) {
@@ -45,7 +44,7 @@ const SearchForm = () => {
         background: (theme) => theme.others.white,
       }}
     >
-      <form onSubmit={handleSubmit} className="form">
+      <Form className="form" method="get" action="/results">
         <Box component="section" className="form--fields">
           <Box component="section" className="path__container">
             <Box component="article" className="path__container--cities">
@@ -74,6 +73,7 @@ const SearchForm = () => {
                             setValue={setValue}
                             canBeDeleted={canBeDeleted}
                             handleDelete={handleDelete}
+                            selectedCities={selectedCities}
                           />
                         );
                       }
@@ -103,12 +103,12 @@ const SearchForm = () => {
             />
           </Box>
         </Box>
-      </form>
-      <Box component="section" className="form--submit">
-        <Button id="submit-form-button" type="submit" disabled={!isFormValid}>
-          Submit
-        </Button>
-      </Box>
+        <Box component="section" className="form--submit">
+          <button id="submit-form-button" type="submit" disabled={!isFormValid}>
+            Submit
+          </button>
+        </Box>
+      </Form>
     </Box>
   );
 };
