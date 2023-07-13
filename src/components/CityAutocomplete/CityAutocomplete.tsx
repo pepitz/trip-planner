@@ -16,7 +16,6 @@ import { ICityAutocompleteProps } from 'types';
 import * as CONSTANTS from 'constants/index';
 import CustomIcon from 'components/CustomIcon/CustomIcon';
 import icons from 'enums/icons';
-import React from 'react';
 
 const CityAutocomplete = ({
   index,
@@ -26,6 +25,7 @@ const CityAutocomplete = ({
   setValue,
   canBeDeleted,
   handleDelete,
+  selectedCities,
 }: ICityAutocompleteProps) => {
   const [optionsCities, setOptionsCitites] = useState<string[]>([]);
 
@@ -74,6 +74,9 @@ const CityAutocomplete = ({
         sx={{ flex: 1 }}
         readOnly={isServerError}
         options={optionsCities}
+        getOptionDisabled={(option) => {
+          return selectedCities.includes(option);
+        }}
         loading={isLoadingOptions}
         onBlur={() => {
           if (isServerError) {
@@ -147,4 +150,4 @@ const CityAutocomplete = ({
   );
 };
 
-export default React.memo(CityAutocomplete);
+export default CityAutocomplete;

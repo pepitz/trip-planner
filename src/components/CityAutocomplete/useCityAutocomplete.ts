@@ -5,6 +5,7 @@ import * as CONSTANTS from 'constants/index';
 
 const useCityAutocomplete = () => {
   const [cities, setCities] = useState<ICityAutocompleteProps[]>([]);
+  const [selectedCities, setSelectedCities] = useState<string[]>([]);
   const [hasValidCities, setHasValidCities] = useState(false);
 
   const handleAddCity = () => {
@@ -55,6 +56,7 @@ const useCityAutocomplete = () => {
         setValue: setCities,
         canBeDeleted: false,
         handleDelete: handleRemoveCity,
+        selectedCities: [] as string[],
       },
       {
         index: 1,
@@ -64,6 +66,7 @@ const useCityAutocomplete = () => {
         setValue: setCities,
         canBeDeleted: false,
         handleDelete: handleRemoveCity,
+        selectedCities: [] as string[],
       },
     ];
     setCities(initialCities);
@@ -81,12 +84,20 @@ const useCityAutocomplete = () => {
     } else {
       setHasValidCities(false);
     }
+
+    if (cities.length > 0) {
+      const filteredValues = formCityValues
+        .filter((field) => Boolean(field.id.value))
+        .map((city) => city.id.value);
+      setSelectedCities(filteredValues);
+    }
   }, [cities]);
 
   return {
     cities,
     handleAddCity,
     hasValidCities,
+    selectedCities,
   };
 };
 
