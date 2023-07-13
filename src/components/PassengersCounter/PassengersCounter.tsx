@@ -4,7 +4,7 @@ import {
   OutlinedInput,
   FormHelperText,
 } from '@mui/material';
-import Box from '@mui/material/Box';
+
 import { useState } from 'react';
 
 import IconButton from '@mui/material/IconButton';
@@ -40,59 +40,56 @@ const PassengersCounter = ({
     });
 
   return (
-    <Box component="section" className="passengers-box">
-      <FormControl
-        required
-        sx={{ m: 1, width: 'auto' }}
-        variant="outlined"
-        error={isPassengersValid === false}
-      >
-        <InputLabel htmlFor="passengers">{CONSTANTS.PASSENGERS}</InputLabel>
-        <OutlinedInput
-          id="passengers"
-          name="passengersCount"
-          type="number"
-          value={numberPassengers}
-          onBlur={() =>
-            handlePassengersValidation(setPassengersValid, numberPassengers)
-          }
-          startAdornment={
-            <InputAdornment position="start">
-              <IconButton
-                onClick={handleDecrement}
-                edge="end"
-                disabled={numberPassengers === minCount}
-              >
-                <CustomIcon
-                  width={22}
-                  heigt={22}
-                  viewBox="0 0 22 22"
-                  icon={icons.minus_squared}
-                ></CustomIcon>
-              </IconButton>
-            </InputAdornment>
-          }
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                onClick={handleIncrement}
-                edge="end"
-                disabled={numberPassengers === maxCount}
-              >
-                <CustomIcon
-                  width={22}
-                  heigt={22}
-                  viewBox="0 0 22 22"
-                  icon={icons.plus_squared}
-                ></CustomIcon>
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Passengers"
-        />
-        <FormHelperText>{errorMsgPassengers}</FormHelperText>
-      </FormControl>
-    </Box>
+    <FormControl
+      required
+      variant="outlined"
+      error={isPassengersValid === false}
+    >
+      <InputLabel htmlFor="passengers">{CONSTANTS.PASSENGERS}</InputLabel>
+      <OutlinedInput
+        id="passengers"
+        name="passengersCount"
+        type="number"
+        value={numberPassengers}
+        onBlur={() =>
+          handlePassengersValidation(setPassengersValid, numberPassengers)
+        }
+        startAdornment={
+          <InputAdornment position="start">
+            <IconButton
+              onClick={handleDecrement}
+              edge="end"
+              disabled={numberPassengers === minCount}
+            >
+              <CustomIcon
+                width={22}
+                heigt={22}
+                viewBox="0 0 22 22"
+                icon={icons.minus_squared}
+              ></CustomIcon>
+            </IconButton>
+          </InputAdornment>
+        }
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              onClick={handleIncrement}
+              edge="end"
+              disabled={numberPassengers === maxCount}
+            >
+              <CustomIcon
+                width={22}
+                heigt={22}
+                viewBox="0 0 22 22"
+                icon={icons.plus_squared}
+              ></CustomIcon>
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Passengers"
+      />
+      <FormHelperText>{errorMsgPassengers}</FormHelperText>
+    </FormControl>
   );
 };
 

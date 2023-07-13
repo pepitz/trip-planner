@@ -13,11 +13,7 @@ const AddDestinationButton = ({
   handleAddCity,
 }: IAddDestinationButton): JSX.Element => {
   return (
-    <Box
-      sx={{ color: 'others.purpleDark' }}
-      component="section"
-      className="path__container--add-city"
-    >
+    <Box component="section" className="path__container--add-city">
       <label htmlFor="addButton">
         <IconButton id="addButton" onClick={handleAddCity}>
           <CustomIcon fill="transparent" icon={icons.plus_outlined} />

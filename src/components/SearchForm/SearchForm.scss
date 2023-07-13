@@ -27,9 +27,6 @@
             height: 1.4rem;
           }
         }
-        &__control:nth-child(1) {
-          margin-bottom: 2rem;
-        }
       }
       .MuiAutocomplete-option {
         background-color: #c7d1f4;
@@ -37,29 +34,33 @@
     }
   }
 
-  .passengers__container {
-    flex: 1;
+  .passengersDate-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-left: 6rem;
-
-    .passengers {
-      margin-top: -0.9rem;
+    width: '25%';
+    .passengers__container {
       display: flex;
       flex-direction: column;
-      &-title {
-        margin: 0 0 00 4px;
-        padding: 0;
-        font-size: 1.2rem;
-        font-weight: 500;
+      align-items: center;
+
+      .passengers {
+        display: flex;
+        flex-direction: column;
+      }
+      input {
+        text-align: center;
+      }
+      input::-webkit-inner-spin-button {
+        display: none;
       }
     }
-    input {
-      text-align: center;
-    }
-    input::-webkit-inner-spin-button {
-      display: none;
+
+    .datepicker__container {
+      display: flex;
+      margin-top: 3.2rem;
+      & > div {
+        flex: 1;
+      }
     }
   }
 }

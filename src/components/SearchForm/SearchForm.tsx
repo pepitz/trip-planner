@@ -85,8 +85,8 @@ const SearchForm = () => {
             <AddDestinationButton handleAddCity={handleAddCity} />
           </Box>
 
-          <Box component="section" className="passengers__container">
-            <Box className="passengers">
+          <Box component="section" className="passengersDate-wrapper">
+            <Box component="article" className="passengers__container">
               <PassengersCounter
                 numberPassengers={numberPassengers}
                 setNumberPassengers={setNumberPassengers}
@@ -94,13 +94,13 @@ const SearchForm = () => {
                 isPassengersValid={isPassengersValid}
               />
             </Box>
-          </Box>
-          <Box className="datepicker">
-            <DateSelector
-              date={date}
-              setDate={setDate}
-              isDateValid={isDateValid}
-            />
+            <Box component="article" className="datepicker__container">
+              <DateSelector
+                date={date}
+                setDate={setDate}
+                isDateValid={isDateValid}
+              />
+            </Box>
           </Box>
         </Box>
         <Box component="section" className="form--submit">
