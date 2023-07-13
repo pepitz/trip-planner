@@ -13,6 +13,7 @@ export interface ICityAutocompleteProps {
   setValue: React.Dispatch<React.SetStateAction<ICityAutocompleteProps[]>>;
   canBeDeleted: boolean;
   handleDelete: (index: number) => void;
+  selectedCities: string[];
 }
 
 export interface IPassengersProps {
