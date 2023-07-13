@@ -22,6 +22,11 @@ const DateSelector = ({ date, setDate, isDateValid }: IDateSelectorProps) => {
           onChange={(newValue) => {
             newValue && setDate(newValue);
           }}
+          slotProps={{
+            textField: {
+              name: 'selectedDate',
+            },
+          }}
         />
         <FormHelperText>
           {!isDateValid ? CONSTANTS.MESSAGE_DATE : ''}
