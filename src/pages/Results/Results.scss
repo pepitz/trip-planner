@@ -1,0 +1,63 @@
+.results__timeline-wrapper {
+  .MuiTimelineDot-filled {
+    width: 22px;
+    height: 22px;
+    background-image: url('../../assets/ellipse\ 8.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    &:last-child {
+      width: 12px;
+      height: 17px;
+      background-image: url('../../assets/union.svg');
+    }
+  }
+}
+
+.results__timeline-summary {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  .highlights {
+    color: #7786d2;
+  }
+}
+.MuiTimelineConnector-root {
+  margin-top: 4px;
+  margin-right: 3px;
+  border-left: 4px dotted !important;
+  background-color: transparent !important;
+  border-color: #374151;
+}
+
+.distance {
+  width: 10rem;
+  height: 2.5rem;
+  line-height: 15px !important;
+  //   margin: 6px 26px 0 0;
+  padding: 0 16px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7786d2;
+  background-image: url('../../assets/callout.svg');
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+#button-back {
+  margin-top: 20px;
+  background-color: #374151;
+  color: white;
+  cursor: pointer;
+  border: none;
+  &:hover {
+    background-color: #374151;
+    color: white;
+    cursor: pointer;
+  }
+}

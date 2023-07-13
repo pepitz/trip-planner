@@ -37,3 +37,15 @@ export interface IDateSelectorProps {
   setDate: React.Dispatch<React.SetStateAction<Date>>;
   isDateValid: boolean;
 }
+
+export type City = {
+  name: string;
+  latitude: number;
+  longitude: number;
+};
+
+export type Distance = {
+  from: string;
+  to: string;
+  distance: number;
+};

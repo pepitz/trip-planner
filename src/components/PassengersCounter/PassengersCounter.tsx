@@ -48,7 +48,7 @@ const PassengersCounter = ({
       <InputLabel htmlFor="passengers">{CONSTANTS.PASSENGERS}</InputLabel>
       <OutlinedInput
         id="passengers"
-        name="passengersCount"
+        name={CONSTANTS.PASSENGERS_KEY}
         type="number"
         value={numberPassengers}
         onBlur={() =>

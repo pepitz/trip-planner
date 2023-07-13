@@ -1,8 +1,10 @@
 import Box from '@mui/material/Box';
-import './Background.scss';
 
-const Background = () => {
-  return <Box className="backgroundContainer"></Box>;
+type Props = {
+  children: string | JSX.Element | JSX.Element[];
+};
+const Background = ({ children }: Props) => {
+  return <Box className="backgroundContainer">{children}</Box>;
 };
 
 export default Background;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useSearchParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 
@@ -15,6 +15,10 @@ import useDateSelector from 'components/DateSelector/useDateSelector';
 import './SearchForm.scss';
 
 const SearchForm = () => {
+  const [search, setSearch] = useSearchParams();
+  const searchAsObject = Object.fromEntries(new URLSearchParams(search));
+  console.log('searchAsObject: ', searchAsObject);
+
   const { cities, handleAddCity, hasValidCities, selectedCities } =
     useCityAutocomplete();
   const [numberPassengers, setNumberPassengers] = useState(0);

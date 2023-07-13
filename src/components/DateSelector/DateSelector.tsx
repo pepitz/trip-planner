@@ -24,7 +24,7 @@ const DateSelector = ({ date, setDate, isDateValid }: IDateSelectorProps) => {
           }}
           slotProps={{
             textField: {
-              name: 'selectedDate',
+              name: CONSTANTS.DATE_KEY,
             },
           }}
         />

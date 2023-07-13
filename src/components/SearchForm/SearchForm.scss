@@ -8,7 +8,7 @@
   }
 
   .path__container {
-    flex: 2;
+    width: 60%;
     display: flex;
     flex-direction: column;
 
@@ -37,7 +37,8 @@
   .passengersDate-wrapper {
     display: flex;
     flex-direction: column;
-    width: '25%';
+    width: 30%;
+    margin-left: 10%;
     .passengers__container {
       display: flex;
       flex-direction: column;
@@ -57,7 +58,7 @@
 
     .datepicker__container {
       display: flex;
-      margin-top: 3.2rem;
+      margin-top: 2.1vh;
       & > div {
         flex: 1;
       }
