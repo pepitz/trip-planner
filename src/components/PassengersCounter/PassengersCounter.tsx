@@ -50,6 +50,7 @@ const PassengersCounter = ({
         <InputLabel htmlFor="passengers">{CONSTANTS.PASSENGERS}</InputLabel>
         <OutlinedInput
           id="passengers"
+          name="passengersCount"
           type="number"
           value={numberPassengers}
           onBlur={() =>
