@@ -15,7 +15,7 @@ import useDateSelector from 'components/DateSelector/useDateSelector';
 import './SearchForm.scss';
 
 const SearchForm = () => {
-  const [search, setSearch] = useSearchParams();
+  const [search] = useSearchParams();
   const searchAsObject = Object.fromEntries(new URLSearchParams(search));
   console.log('searchAsObject: ', searchAsObject);
 

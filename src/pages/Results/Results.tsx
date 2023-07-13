@@ -22,8 +22,6 @@ import useCustomSearchParams from 'hooks/useCustomSearchParams';
 
 import 'components/SearchForm/SearchForm.scss';
 import './Results.scss';
-import CustomIcon from 'components/CustomIcon/CustomIcon';
-import icons from 'enums/icons';
 
 const Results = () => {
   const navigate = useNavigate();
