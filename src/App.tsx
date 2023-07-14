@@ -1,6 +1,10 @@
 import Home from 'pages/Home/Home';
 import Results from 'pages/Results/Results';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +20,10 @@ export const router = createBrowserRouter([
       let searchParamsEntries = url.searchParams.entries();
       return Object.fromEntries(searchParamsEntries);
     },
+  },
+  {
+    path: '*',
+    element: <Navigate to="/" replace />,
   },
 ]);
 
