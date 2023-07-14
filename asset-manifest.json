@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/trip-planner/static/css/main.b5736665.css",
+    "main.js": "/trip-planner/static/js/main.25a1743a.js",
+    "static/js/787.98ca8733.chunk.js": "/trip-planner/static/js/787.98ca8733.chunk.js",
+    "static/media/backgroundHaze.png": "/trip-planner/static/media/backgroundHaze.8b94629b7392a5106a24.png",
+    "static/media/union.svg": "/trip-planner/static/media/union.f0e75630f3f970143295.svg",
+    "index.html": "/trip-planner/index.html",
+    "static/media/callout.svg": "/trip-planner/static/media/callout.53b6a9a76c150a4f19c8.svg",
+    "static/media/ellipse 8.svg": "/trip-planner/static/media/ellipse 8.3cb2f0d8ef02e40891f7.svg",
+    "main.b5736665.css.map": "/trip-planner/static/css/main.b5736665.css.map",
+    "main.25a1743a.js.map": "/trip-planner/static/js/main.25a1743a.js.map",
+    "787.98ca8733.chunk.js.map": "/trip-planner/static/js/787.98ca8733.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b5736665.css",
+    "static/js/main.25a1743a.js"
+  ]
+}
